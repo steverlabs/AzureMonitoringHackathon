@@ -188,7 +188,7 @@
     {
         "type": "Microsoft.Storage/storageAccounts",
         "name": "[variables('storageAccountName')]",
-        "apiVersion": "2016-01-01",
+        "apiVersion": "2017-10-01",
         "location": "[parameters('location')]",
         "sku": {
           "name": "[parameters('storageAccountType')]"
@@ -197,7 +197,7 @@
         "properties": {}
     },  
     {
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2017-10-01",
           "type": "Microsoft.Network/networkSecurityGroups",
           "name": "[variables('feNSGName')]",
           "location": "[parameters('location')]",
@@ -253,7 +253,7 @@
       },
       {
           "type": "Microsoft.Network/networkSecurityGroups",
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2017-10-01",
           "name": "[variables('dbNSGName')]",
           "location": "[parameters('location')]",
           "tags": {
@@ -321,7 +321,7 @@
           }
       },
       {
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2017-10-01",
           "type": "Microsoft.Network/virtualNetworks",
           "name": "[variables('virtualNetworkName')]",
           "location": "[parameters('location')]",
@@ -364,7 +364,7 @@
           "name": "[variables('sqlPublicIP')]",
           "type": "Microsoft.Network/publicIPAddresses",
           "location": "[parameters('location')]",
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2017-10-01",
           "tags": {
               "displayName": "SqlPIP"
           },
@@ -377,7 +377,7 @@
           "name": "[variables('sqlSrvDBNicName')]",
           "type": "Microsoft.Network/networkInterfaces",
           "location": "[parameters('location')]",
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2017-10-01",
           "dependsOn": [
               "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
           ],
@@ -405,7 +405,7 @@
           "name": "[concat(parameters('envPrefixName'), 'sqlSrv16')]",
           "type": "Microsoft.Compute/virtualMachines",
           "location": "[parameters('location')]",
-          "apiVersion": "2017-03-30",
+          "apiVersion": "2017-12-01",
           "dependsOn": [
               "[concat('Microsoft.Network/networkInterfaces/', variables('sqlSrvDBNicName'))]",
               "[concat('Microsoft.Network/publicIPAddresses/', variables('sqlPublicIP'))]"
@@ -448,7 +448,7 @@
           }
       },
       {
-        "apiVersion": "2015-06-15",
+        "apiVersion": "2017-12-01",
         "type": "Microsoft.Compute/virtualMachines/extensions",
         "name": "[concat(parameters('envPrefixName'), 'sqlSrv16/SqlIaasExtension')]",
         "location": "[parameters('location')]",
@@ -492,7 +492,7 @@
         "name": "[variables('VisualStudioPublicIP')]",
         "type": "Microsoft.Network/publicIPAddresses",
         "location": "[parameters('location')]",
-        "apiVersion": "2015-06-15",
+        "apiVersion": "2017-10-01",
         "tags": {
             "displayName": "VSPIP"
         },
@@ -505,7 +505,7 @@
         "name": "[variables('VisualStudioNicName')]",
         "type": "Microsoft.Network/networkInterfaces",
         "location": "[parameters('location')]",
-        "apiVersion": "2015-06-15",
+        "apiVersion": "2017-10-01",
         "dependsOn": [
             "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
         ],
@@ -533,7 +533,7 @@
         "name": "[concat(parameters('envPrefixName'), 'VSSrv17')]",
         "type": "Microsoft.Compute/virtualMachines",
         "location": "[parameters('location')]",
-        "apiVersion": "2017-03-30",
+        "apiVersion": "2017-12-01",
         "dependsOn": [
             "[concat('Microsoft.Network/networkInterfaces/', variables('VisualStudioNicName'))]",
             "[concat('Microsoft.Network/publicIPAddresses/', variables('VisualStudioPublicIP'))]",
@@ -580,7 +580,7 @@
             { 
                        "type": "extensions", 
                        "name": "CustomScriptExtension", 
-                       "apiVersion": "2017-03-30", 
+                       "apiVersion": "2017-12-01", 
                        "location": "[resourceGroup().location]", 
                        "dependsOn": [ 
                          "[concat('Microsoft.Compute/virtualMachines/' ,variables('VisualStudioSrvName'))]"
@@ -846,7 +846,7 @@
                    ]
     },
       {
-          "apiVersion": "2017-03-30",
+          "apiVersion": "2017-12-01",
           "type": "Microsoft.Compute/availabilitySets",
           "location": "[parameters('location')]",
           "name": "[variables('webSrvAvailabilitySetName')]",
@@ -865,7 +865,7 @@
           "name": "[variables('webSrvPublicIP')]",
           "type": "Microsoft.Network/publicIPAddresses",
           "location": "[parameters('location')]",
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2017-10-01",
           "tags": {
               "displayName": "WebSrvPIP for LB"
           },
@@ -878,7 +878,7 @@
           }
       },
       {
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2017-10-01",
           "name": "[variables('webLbName')]",
           "type": "Microsoft.Network/loadBalancers",
           "location": "[parameters('location')]",
@@ -968,7 +968,7 @@
           "name": "[concat(variables('webSrvNicName'), copyindex())]",
           "type": "Microsoft.Network/networkInterfaces",
           "location": "[parameters('location')]",
-          "apiVersion": "2015-06-15",
+          "apiVersion": "2017-10-01",
           "copy": {
               "name": "nicLoop",
               "count": "[variables('webSrvNumbOfInstances')]"
@@ -1008,7 +1008,7 @@
           "name": "[concat(variables('webSrvName'), copyindex())]",
           "type": "Microsoft.Compute/virtualMachines",
           "location": "[parameters('location')]",
-          "apiVersion": "2017-03-30",
+          "apiVersion": "2017-12-01",
           "copy": {
               "name": "webSrvMachineLoop",
               "count": "[variables('webSrvNumbOfInstances')]"
@@ -1305,7 +1305,7 @@
             { 
                        "type": "extensions", 
                        "name": "CustomScriptExtension", 
-                       "apiVersion": "2017-03-30", 
+                       "apiVersion": "2017-12-01", 
                        "location": "[resourceGroup().location]", 
                        "dependsOn": [ 
                          "[concat('Microsoft.Compute/virtualMachines/' ,variables('webSrvName'), copyindex())]"
