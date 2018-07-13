@@ -102,6 +102,20 @@
         
         "defaultValue": "sqladmin"
     },
+    "sqlSku": {
+        "type": "string",
+        "defaultValue": "Standard",
+        "allowedValues": [
+            "Enterprise",
+            "Express",
+            "SQLDEV",
+            "Standard",
+            "Web"
+        ],
+        "metadata": {
+            "description": "SQL SKU option"
+        }
+    },
     "rServicesEnabled": {
         "type": "string",
         "defaultValue": "false"
