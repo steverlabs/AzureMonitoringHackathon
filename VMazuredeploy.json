@@ -157,7 +157,7 @@
       "sqlPublicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses', variables('sqlPublicIP'))]",
       "sqlImagePublisher": "MicrosoftSQLServer",
       "sqlImageOffer": "SQL2016SP1-WS2016",
-      "sqlImageSku": "Standard",
+      "sqlImageSku": "[parameters('sqlSku')]",
       "VisualStudioSrvName": "[concat(parameters('envPrefixName'), 'VSSrv17')]",
       "VisualStudioVmSize": "[parameters('VisualStudioVMSize')]",
       "VisualStudioNicName": "[concat(variables('VisualStudioSrvName'), 'Nic')]",
